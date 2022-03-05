@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+
+$primary: hsl(172, 67%, 45%);
+
+$darkest: hsl(183, 100%, 15%);
+$darkGray0: hsl(186, 14%, 43%);
+$darkGray1: hsl(184, 14%, 56%);
+$lightGray0: hsl(185, 41%, 84%);
+$lightGray1: hsl(189, 41%, 97%);
+
+$active: hsl(173, 61%, 77%);
+$error: hsl(0, 65%, 62%);
+
+html {
+	font-size: 24px;
+	font-family: "Space Mono", sans-serif;
+}
+
+* {
+	user-select: none;
+}
+
+*:focus {
+	outline-color: $primary;
+}
+
+body {
+	background-color: $lightGray0;
+	background-image: url("/images/logo.svg");
+	background-repeat: no-repeat;
+	background-position: center top 3rem;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: calc(100% - 2.6rem);
+	height: auto;
+	position: absolute;
+	border-radius: 1rem 1rem 0 0;
+	padding: 1.3rem;
+	margin-top: 25vh;
+	background: white;
+}
+
+.mainDiv {
+	width: 100%;
+}
+
+.user-input {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+
+	.tip-percents {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.8rem;
+
+		.tip {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: $darkest;
+			text-align: center;
+			font-weight: 700;
+			color: $lightGray0;
+			border-radius: 0.2rem;
+			height: 2rem;
+			transition: 0.1s;
+			cursor: pointer;
+
+			&:hover,
+			&:active {
+				background-color: $primary;
+				color: $darkest;
+			}
+			&:active {
+				background-color: $active;
+				transition: 0;
+			}
+		}
+
+		.custom-tip {
+			background-color: $lightGray1;
+			color: $darkGray0;
+			padding: 0;
+			width: 100%;
+		}
+
+		.chosen-tip {
+			background-color: $primary;
+			color: $darkest;
+		}
+	}
+
+	h2 {
+		margin: 0;
+		margin-bottom: 0.3rem;
+		font-size: 0.8rem;
+		color: $darkGray0;
+	}
+
+	> div {
+		position: relative;
+		margin-bottom: 0.7rem;
+	}
+
+	input[type="number"] {
+		border: none;
+		color: $darkest;
+		background-color: $lightGray1;
+		height: 2rem;
+		width: calc(100% - 2rem);
+		padding: 0 1rem;
+		border-radius: 0.1rem;
+		font-size: 1rem;
+		font-family: "Space Mono", sans-serif;
+		font-weight: 700;
+		text-align: right;
+		-moz-appearance: textfield;
+
+		// Removes the arrows on a number form input.
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+	}
+
+	.bill::before,
+	.head-count::before {
+		content: "";
+		position: absolute;
+		top: 2rem;
+		left: 0.7rem;
+		background-repeat: no-repeat;
+		background-size: contain;
+		height: 1rem;
+		width: 1rem;
+	}
+	.bill::before {
+		background-image: url("./images/icon-dollar.svg");
+	}
+	.head-count::before {
+		background-image: url("./images/icon-person.svg");
+	}
+}
+
+.outputs {
+	background-color: $darkest;
+	border-radius: 0.5rem;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+
+	.outputsDisplay {
+		flex: 5;
+		display: flex;
+		flex-direction: column;
+
+		.output {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 0.4rem;
+			
+			h2 {
+				position: relative;
+				color: $lightGray0;
+				font-size: 0.8rem;
+				width: 50%;
+				top: -0.5rem;
+
+				span {
+					position: absolute;
+					left: 0;
+					top: 1.2rem;
+					font-size: 0.8em;
+					color: $darkGray0
+				}
+			}
+
+			.price {
+				color: $primary;
+				font-weight: 700;
+				font-size: 1.5rem;
+			}
+		}
+	}
+
+	.reset {
+		background-color: $primary;
+		color: $darkest;
+		border: none;
+		font-family: "Space Mono", sans-serif;
+		text-transform: uppercase;
+		font-size: 1rem;
+		font-weight: 700;
+		border-radius: 0.2rem;
+		margin-top: 1rem;
+		height: 2rem;
+		cursor: pointer;
+		transition: 0.2s;
+
+		&:hover {
+			filter: brightness(1.2);
+		}
+		&:active {
+			background-color: $active;
+			transition: 0s;
+		}
+	}
+}
+
+@media screen and (min-width: 600px) {
+	main {
+		max-width: 900px;
+		border-radius: 1rem;
+	}
+
+	.mainDiv {
+		display: flex;
+		gap: 1.5rem;
+
+		& > * {
+			flex: 1;
+		}
+
+		.tip-percents {
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 0.5rem;
+		}
+
+		.outputs {
+			padding: 1.5rem;
+
+			.output {
+				padding-bottom: 1rem;
+			}
+		}
+	}
+}
+
+.error {
+	color: $error;
+	position: absolute;
+	font-size: 0.6em;
+	top: 3rem;
+	right: 0rem;
+}
+.input-error {
+	outline: solid 2px $error;
+}

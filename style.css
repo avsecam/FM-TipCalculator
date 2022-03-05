@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+html {
+  font-size: 24px;
+  font-family: "Space Mono", sans-serif;
+}
+
+* {
+  user-select: none;
+}
+
+*:focus {
+  outline-color: #26c0ab;
+}
+
+body {
+  background-color: #c5e4e7;
+  background-image: url("/images/logo.svg");
+  background-repeat: no-repeat;
+  background-position: center top 3rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 2.6rem);
+  height: auto;
+  position: absolute;
+  border-radius: 1rem 1rem 0 0;
+  padding: 1.3rem;
+  margin-top: 25vh;
+  background: white;
+}
+
+.mainDiv {
+  width: 100%;
+}
+
+.user-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.user-input .tip-percents {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+.user-input .tip-percents .tip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00494d;
+  text-align: center;
+  font-weight: 700;
+  color: #c5e4e7;
+  border-radius: 0.2rem;
+  height: 2rem;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.user-input .tip-percents .tip:hover, .user-input .tip-percents .tip:active {
+  background-color: #26c0ab;
+  color: #00494d;
+}
+.user-input .tip-percents .tip:active {
+  background-color: #a1e8e0;
+  transition: 0;
+}
+.user-input .tip-percents .custom-tip {
+  background-color: #f4fafa;
+  color: #5e7a7d;
+  padding: 0;
+  width: 100%;
+}
+.user-input .tip-percents .chosen-tip {
+  background-color: #26c0ab;
+  color: #00494d;
+}
+.user-input h2 {
+  margin: 0;
+  margin-bottom: 0.3rem;
+  font-size: 0.8rem;
+  color: #5e7a7d;
+}
+.user-input > div {
+  position: relative;
+  margin-bottom: 0.7rem;
+}
+.user-input input[type=number] {
+  border: none;
+  color: #00494d;
+  background-color: #f4fafa;
+  height: 2rem;
+  width: calc(100% - 2rem);
+  padding: 0 1rem;
+  border-radius: 0.1rem;
+  font-size: 1rem;
+  font-family: "Space Mono", sans-serif;
+  font-weight: 700;
+  text-align: right;
+  -moz-appearance: textfield;
+}
+.user-input input[type=number]::-webkit-outer-spin-button, .user-input input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.user-input .bill::before,
+.user-input .head-count::before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  left: 0.7rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 1rem;
+  width: 1rem;
+}
+.user-input .bill::before {
+  background-image: url("./images/icon-dollar.svg");
+}
+.user-input .head-count::before {
+  background-image: url("./images/icon-person.svg");
+}
+
+.outputs {
+  background-color: #00494d;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.outputs .outputsDisplay {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+}
+.outputs .outputsDisplay .output {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+.outputs .outputsDisplay .output h2 {
+  position: relative;
+  color: #c5e4e7;
+  font-size: 0.8rem;
+  width: 50%;
+  top: -0.5rem;
+}
+.outputs .outputsDisplay .output h2 span {
+  position: absolute;
+  left: 0;
+  top: 1.2rem;
+  font-size: 0.8em;
+  color: #5e7a7d;
+}
+.outputs .outputsDisplay .output .price {
+  color: #26c0ab;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.outputs .reset {
+  background-color: #26c0ab;
+  color: #00494d;
+  border: none;
+  font-family: "Space Mono", sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 0.2rem;
+  margin-top: 1rem;
+  height: 2rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.outputs .reset:hover {
+  filter: brightness(1.2);
+}
+.outputs .reset:active {
+  background-color: #a1e8e0;
+  transition: 0s;
+}
+
+@media screen and (min-width: 600px) {
+  main {
+    max-width: 900px;
+    border-radius: 1rem;
+  }
+
+  .mainDiv {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .mainDiv > * {
+    flex: 1;
+  }
+  .mainDiv .tip-percents {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .mainDiv .outputs {
+    padding: 1.5rem;
+  }
+  .mainDiv .outputs .output {
+    padding-bottom: 1rem;
+  }
+}
+.error {
+  color: #dd5f5f;
+  position: absolute;
+  font-size: 0.6em;
+  top: 3rem;
+  right: 0rem;
+}
+
+.input-error {
+  outline: solid 2px #dd5f5f;
+}
+
+/*# sourceMappingURL=style.css.map */
